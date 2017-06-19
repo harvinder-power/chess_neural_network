@@ -18,7 +18,7 @@ Initially V(s) is set to:
 * 0.5 for all other states.
 
 ## Platforms
-Our code thus far has only been tested on Mac OSX. It is safe to assume it will also work on Linux and Windows but if you have problems on other platforms, please raise an issue or submit a Pull Request if you know the fix!
+Our code thus far has only been tested on Mac OSX. It is safe to assume it will also work on Linux and Windows but if you have problems on other platforms, please raise an issue or submit a Pull Request (if you know the fix)!
 
 ## Initialisation
 To use this game, the following packages have to be installed - numpy, itertools, pickle, h5py. This can be achieved by running the following commands in terminal:
