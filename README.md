@@ -55,4 +55,3 @@ To play against the computer, simply run _main.py_. Your selected move must be e
 | 0 | 1 | 2 |
 | 3 | 4 | 5 |
 | 6 | 7 | 8 |
-|   |   |   |   |   |
