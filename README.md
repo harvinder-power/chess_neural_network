@@ -13,9 +13,9 @@ V(s) = V(s) + _learning_rate_ * [V(s') - V(s)]
 Where s is the current state, and s' is the next state.
 
 Initially V(s) is set to:
-    * 1.0 if s is a win state.
-    * 0.0 if s is a draw or loss state.
-    * 0.5 for all other states.
+* 1.0 if s is a win state.
+* 0.0 if s is a draw or loss state.
+* 0.5 for all other states.
 
 ## Platforms
 Our code thus far has only been tested on Mac OSX. It is safe to assume it will also work on Linux and Windows but if you have problems on other platforms, please raise an issue or submit a Pull Request if you know the fix!
