@@ -53,5 +53,10 @@ To play against the computer, simply run _main.py_. Your selected move must be e
 |   |   |   |
 |---|---|---|
 | 0 | 1 | 2 |
-| 4 | 5 | 6 |
-| 7 | 8 | 9 |
+| 3 | 4 | 5 |
+| 6 | 7 | 8 |
+
+| | | |
+|-|-|-|
+| Normal Key| Value1 |
+|__BoldKey__| Value2 |
