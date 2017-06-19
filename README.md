@@ -1,9 +1,20 @@
 # Tic-Tac-Toe
+
 ## Introduction
-Variant of the classic game Tic-Tac-Toe to incorporate temporal difference based learning. In brief, the computer creates a lookup table which it uses to choose its next move. However, it randomly decides to explore new probabilities to determine if it provides a significant advantage in further play, with a feedback loop to reinforce this action.
+Variant of the classic game Tic-Tac-Toe to incorporate Temporal Difference Reinforcement Learning. In brief, the computer creates a lookup table which it uses to choose its next move. However, it randomly decides to explore new states to avoid falling into the trap of only visiting familiar states. We hope to prevent our Tic Tac Toe bot from experiencing blissful ignorance when navigating the state space!
+
+## Literature
+This code is based upon the Tic Tac Toe example from Chapter 1 of [_Reinforcement Learning: An Introduction_](http://people.inf.elte.hu/lorincz/Files/RL_2006/SuttonBook.pdf) by Sutton and Barto.
+
+The learning equation powering this code is the Temporal Difference update equation:
+
+$V(s) = V(s) + \alpha [V(s') - V(s)]$
+
+## Platforms
+Our code thus far has only been tested on Mac OSX. It is safe to assume it will also work on Linux and Windows but if you have problems on other platforms, please raise an issue or submit a Pull Request if you know the fix!
 
 ## Initialisation
-To use this game, the following packages have to be installed - numpy, itertools, pickle, h5py. These can be done through the following commands in terminal:
+To use this game, the following packages have to be installed - numpy, itertools, pickle, h5py. This can be achieved by running the following commands in terminal:
 
 ```
 >> sudo easy_install pip
@@ -14,35 +25,19 @@ To use this game, the following packages have to be installed - numpy, itertools
 ```
 All the relevant packages should now be installed, and you should be ready to go!
 
-The script can be run in the command line with the following command:
+The script can be run in a terminal with the following command:
 
 ```
->> python TemporalDifference.py
+>> python main.py
 ```
-Alternatively, the script can be run using Jupyter Notebook (see [Jupyter.org](http://jupyter.org) for more details on installation)
+
+To train a new model from scratch, simply delete the _valuetable.txt_ file. This file stores a pretrained model that works well in our experience. 
 
 ## Modification
-Sections [1] to [5] in the notebook are to setup the game itself.
 
-Section [7] contains the parameter `trainFromScratch` which is initially set to `True`. This can be modified to be `False` to shorten processing time in later runs. The parameter `trainAtAll` can also be set to `False` to not use a training algorithm altogether.
+In _main.py_ changing the _n_episodes_ parameter will affect the performance of the trained model. Too few episodes will lead to a poor Tic Tac Toe player, and too many episodes will lead to a long training time. In our experience, 100000 episodes is the 'sweet spot'.
 
-The training process iterates through the future states to find the best one in terms of the value function, V.
-
-To allow the algorithm to learn - the following line of code is used:
-```
-# Explore suboptimal states with some probability
-if np.random.uniform() < exploreProbability:
-    #print 'Explore step'
-    # Don't randomly explore if we are on the verge of a win
-    if abs(maxValue - 1.0) < 1e-12:
-        newState = futureStates[maxIdx]
-        V[curState] = V[curState] + stepSize * (V[newState] - V[curState]) 
-        #print V[curState]
-        curState = newState
-```
-The parameter `exploreProbability` can be modified to search for better outcome at a higher, or lower rate. The default is set to 0.4.
-
-Running the code in section [7] generates pickles the valuetable to a file called `valuetable.txt`. If this has already been generated, it can be read rather than re-generating the file (change `trainFromScratch` from True to False).
+The computer plays as 'X' by default, but can be changed to play as 'O' by setting _player_idx_ to 2 when initialising the ReinforcementEngine. The _learning_rate_ can also be changed. A small learning rate avoids falling into local minima, but decreases the convergence rate. A large learning rate may converge faster by may also 'overshoot' the minimum and lead to poor results. We recommend setting the _learning_rate_ to 0.01. As mentioned earlier, _explore_probability_ is used to prevent the learning agent from only exploring previously visited areas of the state space. Increasing this probability will improve the chances that the agent will explore the entire search space. However, when performing exploration steps, the temporal difference update isn't performed. As such, too much exploration will lead to not enough learning. We find that setting _explore_probability_ to 0.4 works well (i.e. 'explore random states 40% of the time').
 
 ## Playing against the computer
 Running section [10] will then run the game and allow you to play tic-tac-toe in terminal against the computer.
