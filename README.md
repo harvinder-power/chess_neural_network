@@ -50,13 +50,9 @@ The computer plays as 'X' by default, but can be changed to play as 'O' by setti
 
 To play against the computer, simply run _main.py_. Your selected move must be entered as its index on the board - encoded by the numbers 0-8. The board position encoding is configured as follows:
 
-|   |   |   |
-|---|---|---|
-| 0 | 1 | 2 |
-| 3 | 4 | 5 |
-| 6 | 7 | 8 |
-
-| | | |
-|-|-|-|
-| Normal Key| Value1 |
-|__BoldKey__| Value2 |
+|   |   |   |   |   |
+|---|---|---|---|---|
+|   | 0 | 1 | 2 |   |
+|   | 3 | 4 | 5 |   |
+|   | 6 | 7 | 8 |   |
+|   |   |   |   |   |
